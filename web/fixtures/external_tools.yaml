@@ -3,7 +3,8 @@
   fields:
     logo_url: https://raw.githubusercontent.com/projectdiscovery/subfinder/master/static/subfinder-logo.png
     name: subfinder
-    description: Subfinder is a subdomain discovery tool that discovers valid subdomains
+    description:
+      Subfinder is a subdomain discovery tool that discovers valid subdomains
       for websites by using passive online sources.
     github_url: https://github.com/projectdiscovery/subfinder
     license_url: https://github.com/projectdiscovery/subfinder/blob/master/LICENSE.md
@@ -21,7 +22,8 @@
   fields:
     logo_url: https://raw.githubusercontent.com/projectdiscovery/nuclei/master/static/nuclei-logo.png
     name: Nuclei
-    description: Nuclei is used to send requests across targets based on a template
+    description:
+      Nuclei is used to send requests across targets based on a template
       leading to zero false positives and providing fast scanning on large number
       of hosts. Nuclei offers scanning for a variety of protocols including TCP, DNS,
       HTTP, File, etc. With powerful and flexible templating, all kinds of security
@@ -42,7 +44,8 @@
   fields:
     logo_url: https://raw.githubusercontent.com/projectdiscovery/httpx/master/static/httpx-logo.png
     name: httpx
-    description: httpx is a fast and multi-purpose HTTP toolkit allow to run multiple
+    description:
+      httpx is a fast and multi-purpose HTTP toolkit allow to run multiple
       probers using retryablehttp library, it is designed to maintain the result reliability
       with increased threads.
     github_url: https://github.com/projectdiscovery/httpx
@@ -61,7 +64,8 @@
   fields:
     logo_url: https://raw.githubusercontent.com/projectdiscovery/naabu/master/static/naabu-logo.png
     name: naabu
-    description: Naabu is a port scanning tool written in Go that allows you to enumerate
+    description:
+      Naabu is a port scanning tool written in Go that allows you to enumerate
       valid ports for hosts in a fast and reliable manner. It is a really simple tool
       that does fast SYN/CONNECT scans on the host/list of hosts and lists all ports
       that return a reply.
@@ -98,7 +102,8 @@
   fields:
     logo_url: https://raw.githubusercontent.com/owasp-amass/amass/master/images/amass_logo.png
     name: amass
-    description: The OWASP Amass Project performs network mapping of attack surfaces
+    description:
+      The OWASP Amass Project performs network mapping of attack surfaces
       and external asset discovery using open source information gathering and active
       reconnaissance techniques.
     github_url: https://github.com/owasp-amass/amass
@@ -122,7 +127,7 @@
     license_url: https://github.com/ffuf/ffuf/blob/master/LICENSE
     version_lookup_command: ffuf -V
     update_command: go install github.com/ffuf/ffuf/v2@latest
-    install_command: ''
+    install_command: ""
     version_match_regex: (\d+\.)?(\d+\.)?(\*|\d+)
     is_default: true
     is_subdomain_gathering: false
@@ -134,7 +139,8 @@
   fields:
     logo_url: null
     name: sublist3r
-    description: Sublist3r is a python tool designed to enumerate subdomains of websites
+    description:
+      Sublist3r is a python tool designed to enumerate subdomains of websites
       using OSINT. It helps penetration testers and bug hunters collect and gather
       subdomains for the domain they are targeting. Sublist3r enumerates subdomains
       using many search engines such as Google, Yahoo, Bing, Baidu and Ask. Sublist3r
@@ -156,7 +162,8 @@
   fields:
     logo_url: null
     name: hakrawler
-    description: Fast golang web crawler for gathering URLs and JavaSript file locations.
+    description:
+      Fast golang web crawler for gathering URLs and JavaSript file locations.
       This is basically a simple implementation of the awesome Gocolly library.
     github_url: https://github.com/hakluke/hakrawler
     license_url: https://github.com/hakluke/hakrawler/blob/master/LICENSE
@@ -191,7 +198,8 @@
   fields:
     logo_url: https://raw.githubusercontent.com/laramies/theHarvester/master/theHarvester-logo.png
     name: theHarvester
-    description: theHarvester is a very simple to use, yet powerful and effective
+    description:
+      theHarvester is a very simple to use, yet powerful and effective
       tool designed to be used in the early stages of a penetration test or red team
       engagement. Use it for open source intelligence (OSINT) gathering to help determine
       a company's external threat landscape on the internet. The tool gathers emails,
@@ -265,7 +273,8 @@
   fields:
     logo_url: https://github.githubassets.com/images/icons/emoji/unicode/1f98a.png
     name: dalfox
-    description: DalFox is a powerful open-source tool that focuses on automation, making it ideal for quickly scanning for XSS flaws and analyzing parameters. Its advanced testing engine and niche features are designed to streamline the process of detecting and verifying vulnerabilities.
+    description:
+      DalFox is a powerful open-source tool that focuses on automation, making it ideal for quickly scanning for XSS flaws and analyzing parameters. Its advanced testing engine and niche features are designed to streamline the process of detecting and verifying vulnerabilities.
       As for the name, Dal(달) is the Korean word for "moon," while "Fox" stands for "Finder Of XSS".
     github_url: https://github.com/hahwul/dalfox
     license_url: https://github.com/hahwul/dalfox/blob/main/LICENSE.txt
