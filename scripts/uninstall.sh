@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cat ../web/art/saycuRed.txt
+cat ../web/art/saycured.txt
 echo "Uninstalling saycuRed"
 
 if [ "$EUID" -ne 0 ]
