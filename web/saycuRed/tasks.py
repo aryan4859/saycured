@@ -24,13 +24,13 @@ from django.shortcuts import get_object_or_404
 from pycvesearch import CVESearch
 from metafinder.extractor import extract_metadata_from_google_search
 
-from saycured.celery import app
-from saycured.celery_custom_task import SaycuredTask
-from saycured.common_func import *
-from saycured.definitions import *
-from saycured.settings import *
-from saycured.llm import *
-from saycured.utilities import *
+from saycuRed.celery import app
+from saycuRed.celery_custom_task import SaycuredTask
+from saycuRed.common_func import *
+from saycuRed.definitions import *
+from saycuRed.settings import *
+from saycuRed.llm import *
+from saycuRed.utilities import *
 from scanEngine.models import (EngineType, InstalledExternalTool, Notification, Proxy)
 from startScan.models import *
 from startScan.models import EndPoint, Subdomain, Vulnerability

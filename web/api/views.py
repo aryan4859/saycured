@@ -21,13 +21,13 @@ from django.core.cache import cache
 
 from dashboard.models import *
 from recon_note.models import *
-from saycured.celery import app
-from saycured.common_func import *
-from saycured.database_utils import *
-from saycured.definitions import ABORTED_TASK
-from saycured.tasks import *
-from saycured.llm import *
-from saycured.utilities import is_safe_path
+from saycuRed.celery import app
+from saycuRed.common_func import *
+from saycuRed.database_utils import *
+from saycuRed.definitions import ABORTED_TASK
+from saycuRed.tasks import *
+from saycuRed.llm import *
+from saycuRed.utilities import is_safe_path
 from scanEngine.models import *
 from startScan.models import *
 from startScan.models import EndPoint

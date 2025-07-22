@@ -1,6 +1,6 @@
 from django import forms
 from django_ace import AceWidget
-from saycured.validators import validate_short_name
+from saycuRed.validators import validate_short_name
 from scanEngine.models import *
 
 

@@ -24,7 +24,7 @@ from django.template.defaultfilters import slugify
 from startScan.models import *
 from targetApp.models import Domain
 from dashboard.models import *
-from saycured.definitions import *
+from saycuRed.definitions import *
 
 
 logger = logging.getLogger(__name__)

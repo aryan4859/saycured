@@ -5,7 +5,7 @@ import sys
 
 
 def main():
-    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'saycured.settings')
+    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'saycuRed.settings')
     # show saycured artwork
     f = open('art/saycured.txt', 'r')
     file_contents = f.read()

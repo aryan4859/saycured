@@ -9,8 +9,8 @@ from django.utils import timezone
 from dashboard.models import Project
 from targetApp.models import Organization, Domain
 from startScan.models import EndPoint, IpAddress
-from saycured.settings import LOGGING
-from saycured.common_func import *
+from saycuRed.settings import LOGGING
+from saycuRed.common_func import *
 
 logger = logging.getLogger(__name__)
 

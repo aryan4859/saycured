@@ -1,5 +1,5 @@
 from django.db import models
-from saycured.definitions import *
+from saycuRed.definitions import *
 from django.contrib.auth.models import User
 
 

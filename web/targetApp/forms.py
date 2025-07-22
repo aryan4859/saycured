@@ -1,5 +1,5 @@
 from django import forms
-from saycured.validators import validate_domain
+from saycuRed.validators import validate_domain
 
 from .models import *
 

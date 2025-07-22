@@ -5,8 +5,8 @@ env = environ.FileAwareEnv()
 import mimetypes
 import os
 
-from saycured.init import first_run
-from saycured.utilities import SaycuredTaskFormatter
+from saycuRed.init import first_run
+from saycuRed.utilities import SaycuredTaskFormatter
 
 mimetypes.add_type("text/javascript", ".js", True)
 mimetypes.add_type("text/css", ".css", True)

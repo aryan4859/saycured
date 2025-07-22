@@ -14,11 +14,11 @@ from django_celery_beat.models import (ClockedSchedule, IntervalSchedule, Period
 from rolepermissions.decorators import has_permission_decorator
 
 
-from saycured.celery import app
-from saycured.charts import *
-from saycured.common_func import *
-from saycured.definitions import ABORTED_TASK, SUCCESS_TASK
-from saycured.tasks import create_scan_activity, initiate_scan, run_command
+from saycuRed.celery import app
+from saycuRed.charts import *
+from saycuRed.common_func import *
+from saycuRed.definitions import ABORTED_TASK, SUCCESS_TASK
+from saycuRed.tasks import create_scan_activity, initiate_scan, run_command
 from scanEngine.models import EngineType
 from startScan.models import *
 from targetApp.models import *

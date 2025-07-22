@@ -3,7 +3,7 @@ from django.contrib.humanize.templatetags.humanize import (naturalday, naturalti
 from django.db.models import F, JSONField, Value
 from django.forms.models import model_to_dict
 from recon_note.models import *
-from saycured.common_func import *
+from saycuRed.common_func import *
 from rest_framework import serializers
 from scanEngine.models import *
 from startScan.models import *
