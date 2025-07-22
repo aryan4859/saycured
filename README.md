@@ -16,6 +16,11 @@
 - **Detailed Reporting** — Comprehensive scan reports with vulnerability details, risk levels, and remediation tips.
 - **Extensible Architecture** — Easily add new ML models or scanning modules.
 - **User-Friendly Interface** — Web dashboard for managing scans and visualizing results.
-
+  
 ---
+
+## System Architecture
+<p align="center">
+<img src="https://i.postimg.cc/0j2Q2ghr/Django-Web-App.png"/>
+</p>
 
