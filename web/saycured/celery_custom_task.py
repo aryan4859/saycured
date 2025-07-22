@@ -5,10 +5,10 @@ from celery.utils.log import get_task_logger
 from celery.worker.request import Request
 from django.utils import timezone
 from redis import Redis
-from saycuRed.common_func import (fmt_traceback, get_output_file_name,
+from saycured.common_func import (fmt_traceback, get_output_file_name,
 								 get_task_cache_key, get_traceback_path)
-from saycuRed.definitions import *
-from saycuRed.settings import *
+from saycured.definitions import *
+from saycured.settings import *
 from scanEngine.models import EngineType
 from startScan.models import ScanActivity, ScanHistory, SubScan
 
@@ -219,7 +219,7 @@ class SaycuRedTask(Task):
 
 	def notify(self, name=None, severity=None, fields={}, add_meta_info=True):
 		# Import here to avoid Celery circular import and be able to use `delay`
-		from saycuRed.tasks import send_task_notif
+		from saycured.tasks import send_task_notif
 		return send_task_notif.delay(
 			name or self.task_name,
 			status=self.status_str,

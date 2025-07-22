@@ -33,14 +33,20 @@ RUN apt update -y && apt install -y --no-install-recommends \
     x11-utils xvfb wget curl python3-netaddr software-properties-common \
     && rm -rf /var/lib/apt/lists/*
 
-# Add GeckoDriver PPA for Firefox automation if needed
+# Install gnupg2 and dirmngr needed for add-apt-repository
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    gnupg2 \
+    dirmngr \
+    software-properties-common
+
+# Add the Mozilla team PPA
 RUN add-apt-repository -y ppa:mozillateam/ppa
 
 # Install Go
 RUN ARCH=$(dpkg --print-architecture) \
     && curl -L https://go.dev/dl/go${GOVERSION}.linux-${ARCH}.tar.gz | tar -xzC /usr/local
 
-# Install geckodriver
+# Install geckodriver 
 RUN ARCH=$(dpkg --print-architecture) \
     && if [ "$ARCH" = "arm64" ]; then \
         GECKOPATH="geckodriver-v${GECKOVERSION}-linux-aarch64.tar.gz"; \

@@ -120,7 +120,7 @@ then
   git clone https://github.com/scipag/vulscan /usr/src/github/scipag_vulscan
   echo "Symlinking to nmap script dir"
   ln -s /usr/src/github/scipag_vulscan /usr/share/nmap/scripts/vulscan
-  echo "Usage in saycured, set vulscan/vulscan.nse in nmap_script scanEngine port_scan config parameter"
+  echo "Usage in saycuRed, set vulscan/vulscan.nse in nmap_script scanEngine port_scan config parameter"
 fi
 
 # install h8mail
@@ -202,8 +202,8 @@ generate_worker_command() {
     local queue=$1
     local concurrency=$2
     local worker_name=$3
-    local app=${4:-"saycured.tasks"}
-    local directory=${5:-"/usr/src/app/saycured/"}
+    local app=${4:-"saycuRed.tasks"}
+    local directory=${5:-"/usr/src/app/saycuRed/"}
 
     local base_command="celery -A $app worker --pool=gevent --optimization=fair --autoscale=$concurrency,1 --loglevel=$loglevel -Q $queue -n $worker_name"
 
@@ -220,9 +220,9 @@ commands=""
 
 # Main scan worker
 if [ "$DEBUG" == "1" ]; then
-    commands+="watchmedo auto-restart --recursive --pattern=\"*.py\" --directory=\"/usr/src/app/saycured/\" -- celery -A saycured.tasks worker --loglevel=$loglevel --optimization=fair --autoscale=$MAX_CONCURRENCY,$MIN_CONCURRENCY -Q main_scan_queue &"$'\n'
+    commands+="watchmedo auto-restart --recursive --pattern=\"*.py\" --directory=\"/usr/src/app/saycuRed/\" -- celery -A saycuRed.tasks worker --loglevel=$loglevel --optimization=fair --autoscale=$MAX_CONCURRENCY,$MIN_CONCURRENCY -Q main_scan_queue &"$'\n'
 else
-    commands+="celery -A saycured.tasks worker --loglevel=$loglevel --optimization=fair --autoscale=$MAX_CONCURRENCY,$MIN_CONCURRENCY -Q main_scan_queue &"$'\n'
+    commands+="celery -A saycuRed.tasks worker --loglevel=$loglevel --optimization=fair --autoscale=$MAX_CONCURRENCY,$MIN_CONCURRENCY -Q main_scan_queue &"$'\n'
 fi
 
 # API shared task worker

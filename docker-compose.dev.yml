@@ -84,7 +84,7 @@ services:
       context: ./web
     entrypoint: /usr/src/app/entrypoint.sh
     restart: always
-    image: docker.pkg.github.com/yogeshojha/saycured/saycured:latest
+    image: docker.pkg.github.com/saycuredojha/saycured/saycured:latest
     environment:
       - DEBUG=1
       - CELERY_BROKER=redis://redis:6379/0

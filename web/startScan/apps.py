@@ -1,5 +1,5 @@
 from django.apps import AppConfig
-from saycuRed.definitions import logger
+from saycured.definitions import logger
 
 
 class StartscanConfig(AppConfig):

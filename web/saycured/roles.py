@@ -1,5 +1,5 @@
 from rolepermissions.roles import AbstractUserRole
-from saycuRed.definitions import *
+from saycured.definitions import *
 
 class SysAdmin(AbstractUserRole):
     available_permissions = {

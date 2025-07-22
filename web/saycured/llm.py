@@ -1,8 +1,8 @@
 
 import openai
 import re
-from saycuRed.common_func import get_open_ai_key, parse_llm_vulnerability_report
-from saycuRed.definitions import VULNERABILITY_DESCRIPTION_SYSTEM_MESSAGE, ATTACK_SUGGESTION_GPT_SYSTEM_PROMPT, OLLAMA_INSTANCE
+from saycured.common_func import get_open_ai_key, parse_llm_vulnerability_report
+from saycured.definitions import VULNERABILITY_DESCRIPTION_SYSTEM_MESSAGE, ATTACK_SUGGESTION_GPT_SYSTEM_PROMPT, OLLAMA_INSTANCE
 from langchain_community.llms import Ollama
 
 from dashboard.models import OllamaSettings

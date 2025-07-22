@@ -4,9 +4,9 @@ from django.contrib.auth.models import User
 from django.contrib.postgres.fields import ArrayField
 from django.db import models
 from django.utils import timezone
-from saycuRed.definitions import (CELERY_TASK_STATUSES,
+from saycured.definitions import (CELERY_TASK_STATUSES,
 								 NUCLEI_REVERSE_SEVERITY_MAP)
-from saycuRed.utilities import *
+from saycured.utilities import *
 from scanEngine.models import EngineType
 from targetApp.models import Domain
 

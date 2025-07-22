@@ -21,14 +21,14 @@ from discord_webhook import DiscordEmbed, DiscordWebhook
 from django.db.models import Q
 from dotted_dict import DottedDict
 
-from saycuRed.common_serializers import *
-from saycuRed.definitions import *
-from saycuRed.settings import *
+from saycured.common_serializers import *
+from saycured.definitions import *
+from saycured.settings import *
 from scanEngine.models import *
 from dashboard.models import *
 from startScan.models import *
 from targetApp.models import *
-from saycuRed.utilities import is_valid_url
+from saycured.utilities import is_valid_url
 
 
 logger = get_task_logger(__name__)

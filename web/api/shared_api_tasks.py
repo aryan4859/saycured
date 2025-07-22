@@ -1,10 +1,10 @@
 # include all the celery tasks to be used in the API, do not put in tasks.py
 import requests
 
-from saycuRed.common_func import create_inappnotification, get_hackerone_key_username
-from saycuRed.definitions import PROJECT_LEVEL_NOTIFICATION, HACKERONE_ALLOWED_ASSET_TYPES
-from saycuRed.celery import app
-from saycuRed.database_utils import bulk_import_targets
+from saycured.common_func import create_inappnotification, get_hackerone_key_username
+from saycured.definitions import PROJECT_LEVEL_NOTIFICATION, HACKERONE_ALLOWED_ASSET_TYPES
+from saycured.celery import app
+from saycured.database_utils import bulk_import_targets
 
 @app.task(name='import_hackerone_programs_task', bind=False, queue='api_queue')
 def import_hackerone_programs_task(handles, project_slug, is_sync = False):
