@@ -4,10 +4,10 @@ FROM ubuntu:22.04
 ARG GECKOVERSION=0.33.0
 ARG GOVERSION=1.21.5
 
-RUN ARCH=$(dpkg --print-architecture) \ 
-    && if [ "${ARCH}" ! "arm64" ] || [ "${ARCH}" ! "amd64" ]; then \
-      echo "saycuRed not supported, encountered unknown architecture: ${TARGETPLATFORM}" \
-      && exit 1; \
+# Check supported architecture
+RUN ARCH=$(dpkg --print-architecture) \
+    && if [ "$ARCH" != "arm64" ] && [ "$ARCH" != "amd64" ]; then \
+        echo "saycuRed not supported, encountered unknown architecture: $ARCH" && exit 1; \
     fi
 
 # Labels and Credits
@@ -18,65 +18,51 @@ LABEL \
 
 # Environment Variables
 ENV DEBIAN_FRONTEND="noninteractive" \
-    DATABASE="postgres"
-ENV PYTHONDONTWRITEBYTECODE 1
-ENV PYTHONUNBUFFERED 1
-ENV GOROOT="/usr/local/go"
-ENV GOPATH=$HOME/go
-ENV PATH="${PATH}:${GOROOT}/bin:${GOPATH}/bin"
+    DATABASE="postgres" \
+    PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1 \
+    GOROOT="/usr/local/go" \
+    GOPATH="/root/go" \
+    PATH="${PATH}:/usr/local/go/bin:/root/go/bin"
 
-# Install Python
-RUN apt update -y && \
-    apt install -y \
-    python3.10 \
-    python3-dev \
-    python3-pip 
+# Install dependencies
+RUN apt update -y && apt install -y --no-install-recommends \
+    python3.10 python3-dev python3-pip \
+    build-essential cmake geoip-bin geoip-database gcc git libpq-dev \
+    libpango-1.0-0 libpangoft2-1.0-0 libpcap-dev netcat nmap \
+    x11-utils xvfb wget curl python3-netaddr software-properties-common \
+    && rm -rf /var/lib/apt/lists/*
 
-# Install essential packages
-RUN apt install -y --no-install-recommends \
-    build-essential \
-    cmake \
-    geoip-bin \
-    geoip-database \
-    gcc \
-    git \
-    libpq-dev \
-    libpango-1.0-0 \
-    libpangoft2-1.0-0 \
-    libpcap-dev \
-    netcat \
-    nmap \
-    x11-utils \
-    xvfb \
-    wget \
-    curl \
-    python3-netaddr \
-    software-properties-common
+# Add GeckoDriver PPA for Firefox automation if needed
+RUN add-apt-repository -y ppa:mozillateam/ppa
 
-RUN add-apt-repository ppa:mozillateam/ppa
-
-RUN ARCH=$(dpkg --print-architecture) \ 
+# Install Go
+RUN ARCH=$(dpkg --print-architecture) \
     && curl -L https://go.dev/dl/go${GOVERSION}.linux-${ARCH}.tar.gz | tar -xzC /usr/local
 
-RUN ARCH=$(dpkg --print-architecture) \ 
-    && if [ "${ARCH}" = "arm64" ]; then \
-      GECKOPATH="geckodriver-v${GECKOVERSION}-linux-aarch64.tar.gz"; \
-    elif [ "${ARCH}" = "amd64" ]; then \
-      GECKOPATH="geckodriver-v${GECKOVERSION}-linux64.tar.gz"; \
+# Install geckodriver
+RUN ARCH=$(dpkg --print-architecture) \
+    && if [ "$ARCH" = "arm64" ]; then \
+        GECKOPATH="geckodriver-v${GECKOVERSION}-linux-aarch64.tar.gz"; \
+    elif [ "$ARCH" = "amd64" ]; then \
+        GECKOPATH="geckodriver-v${GECKOVERSION}-linux64.tar.gz"; \
+    else \
+        echo "Unsupported arch $ARCH"; exit 1; \
     fi \
-    && wget https://github.com/mozilla/geckodriver/releases/download/v${GECKOVERSION}/${GECKO\
-    && tar -xvf ${GECKOPATH} \
-    && rm ${GECKOPATH} \
+    && wget https://github.com/mozilla/geckodriver/releases/download/v${GECKOVERSION}/$GECKOPATH \
+    && tar -xvf $GECKOPATH \
+    && rm $GECKOPATH \
     && mv geckodriver /usr/bin
 
 # Install Rust for orjson
-RUN set -e; curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 ENV PATH="/root/.cargo/bin:${PATH}"
 RUN pip3 install maturin
 
-# Make directory for app
+# Prepare work directory
 WORKDIR /usr/src/app
 
+# Install Go-based recon tools
 ENV GO111MODULE=on 
 RUN printf "\
     github.com/jaeles-project/gospider@latest\n\
@@ -97,27 +83,25 @@ RUN printf "\
     github.com/projectdiscovery/katana/cmd/katana@latest\n\
     github.com/dwisiswant0/crlfuzz/cmd/crlfuzz@latest\n\
     github.com/sa7mon/s3scanner@latest\n" | \
-    xargs -L1 go install -ldflags="-s -w" -v && \
-    rm -rf /go/pkg/* && rm -rf /root/.cache/go-build
+    xargs -L1 go install -ldflags="-s -w" -v \
+    && rm -rf /go/pkg/* && rm -rf /root/.cache/go-build
 
-
-# Update Nuclei and Nuclei-Templates
+# Update Nuclei and Chaos
 RUN nuclei -update-templates
-
-# update chaos
 RUN chaos -update
 
-# Copy requirements
+# Install Python dependencies
 COPY ./requirements.txt /tmp/requirements.txt
 RUN pip3 install --upgrade setuptools==72.1.0
 RUN pip3 install -r /tmp/requirements.txt --no-cache-dir
 
-# install eyewitness
-RUN pip3 install --no-cache-dir fuzzywuzzy \
+# Additional Python tools
+RUN pip3 install --no-cache-dir \
+    fuzzywuzzy \
     selenium==4.9.1 \
     python-Levenshtein \
     pyvirtualdisplay \
     netaddr
 
-# Copy source code
+# Copy project files
 COPY . /usr/src/app/
