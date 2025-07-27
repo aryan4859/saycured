@@ -1,23 +1,64 @@
+
+<p align="center">
+  <h3>sayCured: The Ultimate Web Reconnaissance & Vulnerability Scanner 🚀</h3>
+</p>
 <p align="center">
   <img src="https://i.postimg.cc/HLTgvH8y/Gemini-Generated-Image-a9s90ga9s90ga9s9.jpg" alt="Saycured Logo" width="300" />
 </p>
 
 
-**Saycured** is a next-generation web vulnerability scanner enhanced with machine learning integration to provide more accurate and insightful detection of security flaws. By combining traditional scanning techniques with intelligent ML models, Saycured improves the precision of vulnerability proof-of-concepts (PoCs) and reduces false positives, empowering security professionals to conduct faster and smarter penetration tests.
+ <p align="center">
+<a href="https://saycured.wiki"><img src=".github/screenshots/banner.gif" alt=""/></a>
+</p>
 
----
 
-## Features
+<h4>What is sayCured?</h4>
+sayCured is your ultimate web application reconnaissance suite, designed to supercharge the recon process for security pros, pentesters, and bug bounty hunters. It is go-to web application reconnaissance suite that's designed to simplify and streamline the reconnaissance process for all the needs of security professionals, penetration testers, and bug bounty hunters. With its highly configurable engines, data correlation capabilities, continuous monitoring, database-backed reconnaissance data, and an intuitive user interface, sayCured redefines how you gather critical information about your target web applications.
 
-- **Web Vulnerability Scanning** — Detects common vulnerabilities such as XSS, SQLi, CSRF, and more.
-- **ML-Powered Analysis** — Uses machine learning models to classify and validate vulnerability findings with higher confidence.
-- **Automated Proof-of-Concept Generation** — Generates actionable PoCs to demonstrate exploitability.
-- **Custom Scan Configuration** — Tailor scans based on URL patterns, parameters, and payloads.
-- **Detailed Reporting** — Comprehensive scan reports with vulnerability details, risk levels, and remediation tips.
-- **Extensible Architecture** — Easily add new ML models or scanning modules.
-- **User-Friendly Interface** — Web dashboard for managing scans and visualizing results.
-  
----
+
+
+## Documentation
+
+
+##  Installation
+
+### Quick Setup for Ubuntu/VPS
+
+1. Clone the repository
+
+    ```bash
+    git clone https://github.com/aryan4859/saycured-v2
+    ```
+    ```bash
+    cd saycured
+    ```
+    ```bash
+    make certs
+    make setup
+    make up
+    make build
+    ```
+    To create your user 
+    ```bash
+    make username
+    ```
+
+    To stop the server 
+    ```bash
+    make down
+    ```
+    This is important because server will run even after closing vscode.
+
+    ### Server run on
+    ```bash
+    http://127.0.0.1:8000/
+    ```
+
+    ```bash
+    http://localhost:8000/
+    ```
+    
+
 
 ## System Architecture
 <p align="center">
